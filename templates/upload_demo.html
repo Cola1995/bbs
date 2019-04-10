@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传事例</title>
+</head>
+<body>
+<form action="/upload/" method="post" enctype="multipart/form-data">
+    文件：<input type="file" name="file">
+    <span>{% if  ret.status   %}
+      上传成功
+        {% else %}
+
+    {% endif %}</span>
+    <p><input type="submit" value="开始上传"></p>
+</form>
+
+</body>
+</html>
