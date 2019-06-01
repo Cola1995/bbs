@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>添加文章</title>
+    {#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+    {#    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">#}
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/mystyle.css">
+    <script src="/static/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+
+<div class="info_header pull-right">
+    <ul>
+        <li><a href="/index/">首页</a>&nbsp;|</li>
+        <li><a href="">{{ request.user.username }}</a>&nbsp;&nbsp;|</li>
+        <li><a href="">修改密码</a>&nbsp;&nbsp;|</li>
+        <li><a href="/logout/">退出</a>&nbsp;&nbsp;|</li>
+    </ul>
+</div>
+<div class="clear"></div>
+<div id="main_head">
+    <div id="blog_title"><a href="">{{ request.user.username }}</a></div>
+    <div id="SiteTitle"><a href=""><img alt="logo" src="/static/pic/adminlogo.gif"></a></div>
+</div>
+<hr>
+<div class="row">
+    <div class="add_article">
+        <div class="col-md-2">
+            <div class="list-group">
+                <a href="/blog/add_article/" class="list-group-item">
+                    添加文章
+                </a>
+                <a href="#" class="list-group-item active">添加分类</a>
+                <a href="#" class="list-group-item">Morbi leo risus</a>
+                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                <a href="#" class="list-group-item">Vestibulum at eros</a>
+            </div>
+        </div>
+        <div class="col-md-9 ">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#">文章</a></li>
+                <li role="presentation"><a href="#">随笔</a></li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+            <h3>添加分类</h3>
+            <table class="table table-bordered" id="cata_tab">
+                <thead>
+                <tr>
+                    <td>分类</td>
+                    <td>文章数量</td>
+                    <td>操作</td>
+                    <td>操作</td>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for cat in catablog_list %}
+                    <tr>
+                        <td>{{ cat.title }}</td>
+                        <td>{{ cat.cc }}</td>
+                        <td>编辑</td>
+                        <td><a href="/del_catablog/{{ cat.pk }}">删除</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+{#             提交catablog#}
+            <hr>
+            <div class="col-md-6 form-group">
+                <div class="form-group">
+
+                        {% csrf_token %}
+                        <label for="cata" class="col-sm-2 control-label">分类</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="cata" name="cata" placeholder="分类">
+                        </div>
+                        <div class="col-sm-2"><input type="submit" class="btn btn-info" id="cata_sub" value="保存"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/jquery-3.3.1.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $("#cata_sub").on("click",function () {
+        $.ajax({
+            url: "/aj_add_cata/",
+            type: "post",
+            data: {"csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val(),
+                    "cata": $("#cata").val(),
+            },
+            success: function (data) {
+                if (data.status){
+                    // 有错误
+                }
+                else {// 无错误页面添加tr
+                    var trEle = "<tr><td>"+data.title+"</td><td>0</td><td>编辑</td><td><a>删除</a></td></tr>"
+                    $("#cata_tab").append(trEle)
+                }
+
+            }
+        })
+
+    })
+</script>
+
+
+</body>
+</html>

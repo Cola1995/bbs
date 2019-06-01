@@ -31,6 +31,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="button" class="btn btn-default" id="login-button">登录</button>
+                    <button type="button" class="btn btn-default" id="reg-button">注册</button>
                     <span class="login-error"></span>
                 </div>
             </div>
@@ -108,6 +109,12 @@
                 // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
             }, handlerPopup);
         }
+    });
+
+    // 注册按钮
+    $("#reg-button").on('click',function () {
+        location.href='/register/'
+
     })
 
 

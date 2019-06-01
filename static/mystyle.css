@@ -21,3 +21,128 @@
     width: 80px;
     height: 80px;
 }
+
+.my_help-block {
+    margin-bottom: 0px;
+    margin-top: -3px;
+}
+
+/*index页面作者头像*/
+#author-img{
+    width: 80px;
+    height: 80px;
+}
+
+.article-footer {
+    margin-top: 10px;
+}
+
+.article-footer span {
+    margin-right: 15px;
+}
+
+.blog_head{
+    height: 50px;
+    width: 100%;
+    background-color: #2aabd2;
+    font-family: "Microsoft Himalaya";
+
+}
+
+.blog_head p {
+    font-size: 24px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+#div_digg {
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 30px;
+    font-size: 12px;
+    width: 125px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.diggit {
+    float: left;
+    width: 46px;
+    height: 52px;
+    background: url("/static/pic/upup.gif") no-repeat;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2px;
+    padding-top: 5px;
+}
+.buryit {
+    float: right;
+    margin-left: 20px;
+    width: 46px;
+    height: 52px;
+    background: url("/static/pic/downdown.gif") no-repeat;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2px;
+    padding-top: 5px;
+}
+
+.clear {
+    clear: both;
+}
+
+/*评论样式*/
+ input.author {
+    background-image: url("/static/pic/icon_form.gif");
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+    padding: 4px 4px 4px 30px;
+    width: 300px;
+    font-size: 13px;
+}
+
+ #tbCommentBody {
+    line-height: 1.6;
+}
+
+ .comment_tree .tree_item{
+     margin-left: 20px;
+ }
+
+ #digg_tips{
+     height: 10px;
+ }
+
+/*添加文章页面*/
+.add_article .list-group{
+    margin-top: 40px;
+}
+
+.add_article .nav-tabs{
+    margin-left: -30px;
+}
+
+.info_header li{
+    float: left;
+    list-style: none;
+    margin-right: 10px;
+
+
+
+}
+
+#blog_title {
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+    text-align: right;
+    padding: 30px 10px 10px 0;
+}
+
+#SiteTitle {
+    padding: 4px 4px 15px 80px;
+}
+
+#main_head{
+    margin-top: 10px;
+}

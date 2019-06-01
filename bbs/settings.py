@@ -25,7 +25,7 @@ SECRET_KEY = 'q*&&2zk%ut(szvwja1tt%!&k7l2b%5h8$zsgafggk51w5=ah7z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*",]
 
 
 # Application definition
@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':  'bbs1',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306'
     }
@@ -114,7 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'UTC'
 
@@ -131,10 +132,19 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,"static")
+    os.path.join(BASE_DIR, "static")
 ]
 
 
+# Django用户上传的都叫media文件
+MEDIA_URL = "/media/"
+# media配置，用户上传的文件都默认放在这个文件夹下
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 LOGIN_URL = '/login/'  # 这里配置成你项目登录页面的路由
 
-SESSION_COOKIE_AGE = 180  # session失效日期
+SESSION_COOKIE_AGE = 180000  # session失效日期
+
+
+# 告诉Django项目用哪张表做认证
+AUTH_USER_MODEL = 'app01.UserInfo'

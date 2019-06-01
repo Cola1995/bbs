@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>添加文章</title>
+    {#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+    {#    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">#}
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/mystyle.css">
+    <script src="/static/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+
+<div class="info_header pull-right">
+    <ul>
+        <li><a href="/index/">首页</a>&nbsp;|</li>
+        <li><a href="">{{ request.user.username }}</a>&nbsp;&nbsp;|</li>
+        <li><a href="">修改密码</a>&nbsp;&nbsp;|</li>
+        <li><a href="/logout/">退出</a>&nbsp;&nbsp;|</li>
+    </ul>
+</div>
+<div class="clear"></div>
+<div id="main_head">
+    <div id="blog_title"><a href="">{{ request.user.username }}</a></div>
+    <div id="SiteTitle"><a href=""><img alt="logo" src="/static/pic/adminlogo.gif"></a></div>
+</div>
+<hr>
+<div class="row">
+    <div class="add_article">
+        <div class="col-md-2">
+            <div class="list-group">
+                <a href="/blog/add_article/" class="list-group-item">
+                    添加文章
+                </a>
+                <a href="/blog/add_cat/" class="list-group-item">添加分类</a>
+                <a href="" class="list-group-item">添加分类</a>
+                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                <a href="#" class="list-group-item">Vestibulum at eros</a>
+            </div>
+        </div>
+
+
+        <div class="col-md-9 ">
+
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">文章</a></li>
+            <li role="presentation"><a href="#">随笔</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td width="700">标题</td>
+                    <td>发布状态</td>
+                    <td>评论数</td>
+                    <td>点赞数</td>
+                    <td>操作</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in article_list %}
+                    <tr>
+                        <td>{{ article.title }}</td>
+                        <td>发布</td>
+                        <td>{{ article.comment_count }}</td>
+                        <td>{{ article.up_count }}</td>
+                        <td>编辑</td>
+                        <td><a href="/article/dele/{{ article.pk }}" >删除</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+<script charset="utf-8" src="/static/kindeditor/kindeditor-all-min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>添加文章</title>
+    {#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+    {#    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">#}
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/mystyle.css">
+    <script src="/static/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+
+<div class="info_header pull-right">
+    <ul>
+        <li><a href="/index/">首页</a>&nbsp;|</li>
+        <li><a href="">{{ request.user.username }}</a>&nbsp;&nbsp;|</li>
+        <li><a href="">修改密码</a>&nbsp;&nbsp;|</li>
+        <li><a href="/logout/">退出</a>&nbsp;&nbsp;|</li>
+    </ul>
+</div>
+<div class="clear"></div>
+<div id="main_head">
+            <div id="blog_title"><a href="">{{ request.user.username }}</a></div>
+            <div id="SiteTitle"><a href=""><img alt="logo" src="/static/pic/adminlogo.gif"></a></div>
+        </div>
+<hr>
+<div class="row">
+    <div class="add_article">
+    <div class="col-md-2">
+        <div class="list-group">
+            <a href="#" class="list-group-item active">
+                添加文章
+            </a>
+            <a href="/blog/add_cat/" class="list-group-item">添加分类</a>
+            <a href="#" class="list-group-item">Morbi leo risus</a>
+            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+            <a href="#" class="list-group-item">Vestibulum at eros</a>
+        </div>
+    </div>
+
+
+    <div class="col-md-9 ">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">文章</a></li>
+            <li role="presentation"><a href="#">随笔</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+        <h3>添加文章</h3>
+
+        <form action="/blog/add_article/" method="post">
+            <lable>标题</lable>
+            <input type="text" name="title" class="form-control">
+            <p>内容(TinyMCE编辑器，支持拖放/粘贴上传图片)</p>
+            <textarea name="content" id="editor" cols="140" rows="10"></textarea>
+
+            <div class="col-md-4">
+            <select name="cata" id="" class="form-control" style="margin-left: -16px">
+                {% for c in cata %}
+                <option value="{{ c.pk }}">{{ c.title }}</option>
+                {% endfor %}
+            </select>
+            </div>
+
+            <input type="submit" value="提交" class="btn btn-success">
+            {% csrf_token %}
+        </form>
+    </div>
+    </div>
+</div>
+
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+<script charset="utf-8" src="/static/kindeditor/kindeditor-all-min.js"></script>
+
+<script>
+        KindEditor.ready(function(K) {
+                window.editor = K.create('#editor', {
+                    'resizeType': 1,
+                    'uploadJson': '/upload/',
+                    extraFileUploadParams : {
+                        csrfmiddlewaretoken : $('[name="csrfmiddlewaretoken"]').val(),
+
+                },
+                    filePostName:"upload_img"
+
+                });
+        });
+</script>
+</body>
+</html>
