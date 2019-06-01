@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ blog.title }}</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/mystyle.css">
+    <link rel="stylesheet" href="/static/theme/{{ blog.theme }}">
+</head>
+<body>
+<div class="blog_head">
+    <p>{{ blog.title }}</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+          {% load my_tags %}
+
+            {% get_left_list username %}
+        </div>
+        <div class="col-md-8">
+        {% block page-main %}
+
+{#        <div class="article-list">#}
+{#                {% for article in article_list %}#}
+{#                    <div class="article">#}
+{#                        <h3><a href="">{{ article.title }}</a></h3>#}
+{#                        <div class="media">#}
+{#                            <div class="media-left">#}
+{#                                <a href="#">#}
+{#                                    <img id="author-img" class="media-object author-img" src="/media/{{ article.user.avatar }}" alt="...">#}
+{#                                </a>#}
+{#                            </div>#}
+{#                            <div class="media-body">#}
+{#                                <p>{{ article.desc }}</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="article-footer">#}
+{#                            <span><a href="">{{ article.user.username }}</a></span>发布于#}
+{#                            <span>{{ article.create_time|date:'Y-m-d H:i:s' }}</span>#}
+{#                            <span class="glyphicon glyphicon-comment">评论({{ article.comment_count }})</span>#}
+{#                            <span class="glyphicon glyphicon-thumbs-up">点赞({{ article.up_count }})</span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{##}
+{#            </div>#}
+        {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
